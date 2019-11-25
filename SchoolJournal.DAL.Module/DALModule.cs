@@ -14,8 +14,11 @@
 
             container.RegisterType<IStudentsRepository, StudentsRepository>();
 
-            container.RegisterType<IColumnsRepository, ColumnsRepository>();       
-            
+            container.RegisterType<IColumnMarksRepository, ColumnMarksRepository>();
+
+            container.RegisterType<IColumnsRepository, ColumnsRepository>();
+
+            container.RegisterType<IColumnTypeRepository, ColumnTypeRepository>();
         }
     }
 }

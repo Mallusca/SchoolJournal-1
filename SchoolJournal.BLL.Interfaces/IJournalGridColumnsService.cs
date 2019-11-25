@@ -7,5 +7,7 @@ namespace SchoolJournal.BLL.Interfaces
     public interface IJournalGridColumnsService
     {
         List<JournalGridColumnViewModel> GetJournalGridColumns();
+
+        bool AddJournalGridLessonColumn(IEnumerable<StudentMarkViewModel> marks);
     }
 }

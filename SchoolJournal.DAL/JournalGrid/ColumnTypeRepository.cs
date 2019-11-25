@@ -16,6 +16,7 @@
 
         public ColumnType FindByName(string typeName)
         {
+            //how to seed data to database
             throw new Exception("NEED TO SEED COLUMN TYPES(LESSON, EXAM etc) TO DB AND IMPLEMENT FINDBYNAME");
         }
     }

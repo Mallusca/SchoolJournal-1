@@ -39,8 +39,8 @@
         [HttpPost]
         public ActionResult CreateColumn(IEnumerable<StudentMarkViewModel> marks)
         {
-            //add create column in database
-             return Json(marks.Count() > 0);
+            
+             return Json(_journalGridColumnService.AddJournalGridLessonColumn(marks));
         }
 
     }
