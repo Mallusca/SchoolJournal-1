@@ -1,0 +1,85 @@
+﻿
+td {
+    background: #E0FFFF;
+}
+
+th {
+    background: #F0E68C;
+}
+
+td, th {
+    text-align: center;
+}
+
+.journal-container {
+    display: flex;
+    flex-direction: row;
+    border-collapse: separate;
+}
+
+.journal-table {
+    width: 90%;
+    border-style: solid;
+}
+
+.new-column {
+    width: 10%;
+}
+
+.new-column-control-container {
+    text-align: right;
+}
+
+.confirm-column-creation:hover,
+.create-column:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.cancel-column:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.cancel-column {
+    border: 1px solid;
+    border-radius: 25%;
+    color: blue;
+    font-size: 24px;
+    padding: 2px;
+}
+
+.create-column,
+.confirm-column-creation {
+    border: 1px solid;
+    border-radius: 25%;
+    color: blue;
+    font-size: 24px;
+    padding: 2px;
+}
+
+.confirm-column-creation {
+    display: none;
+}
+
+.new-column-cell {
+    display: none;
+}
+
+.new-column-date {
+    display: none;
+}
+
+.cancel-column {
+    display: none;
+}
+
+.delete-all-columns-and-dates {
+    border: 1px solid;
+    border-radius: 25%;
+    color: blue;
+    font-size: 24px;
+    padding: 2px;
+}
+
+.delete-all-columns-and-dates:hover {  
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+}

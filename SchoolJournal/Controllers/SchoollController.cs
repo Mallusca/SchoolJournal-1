@@ -5,6 +5,7 @@
     using System.IO;
     using System.Linq;
     using System.Net;
+    using System.Threading.Tasks;
     using System.Web.Mvc;
     using Newtonsoft.Json;
     using SchoolJournal.BLL.Interfaces;
@@ -37,11 +38,47 @@
 
 
         [HttpPost]
-        public ActionResult CreateColumn(IEnumerable<StudentMarkViewModel> marks)
+        public async Task<ActionResult> CreateColumn(IEnumerable<StudentMarkViewModel> marks, DateTime inputValue)
         {
-            //add create column in database
-             return Json(marks.Count() > 0);
+
+            bool response = await _journalGridColumnService.AddJournalGridLessonColumn(marks, inputValue);
+
+            return Json(response);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteColumnAndMarks()
+        {
+            var result = await _journalGridColumnService.DeleteJournalGridLessonColumnsAndMarks();
+            return Json(result);
+
+        }
+
+
+        public ActionResult Partial()
+        {
+            List<JournalGridStudentViewModel> studentsForJournalGrid = _studentsService.GetStudentsForJournalGrid();
+            List<JournalGridColumnViewModel> journalGridColumns = _journalGridColumnService.GetJournalGridColumns();
+
+            JournalGridPageViewModel journalGridPageViewModel = new JournalGridPageViewModel(studentsForJournalGrid, journalGridColumns);
+
+            return PartialView(journalGridPageViewModel);
         }
 
     }
 }
+/*
+ * убрать лишние роуты
+ * 
+ * добавить кнопку cancel (иконка крестик) которая отменяет создание колонки и скрывает инпуты и т.д.
+ * 
+ * добваить возможность выбрать дату - инпут в который вводишь дату, изначально в нём текущая дата, 
+ * чтобы при добавлении колонки с указаной датой появлялась колонка с этой датой в нужном месте
+ * 
+ * добавить под таблицу кнопку удалить все колонки с оценками - тоже самое(в плане обновления паршиал вью на респонсе) что и добавить колонку только
+ * новый роут и другое действие
+ */
+
+
+
