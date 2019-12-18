@@ -70,12 +70,19 @@
     <Compile Include="Migrations\201911081414582_change_date_type.designer.cs">
       <DependentUpon>201911081414582_change_date_type.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911291326126_Added_ColumnType.cs" />
+    <Compile Include="Migrations\201911291326126_Added_ColumnType.designer.cs">
+      <DependentUpon>201911291326126_Added_ColumnType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912051600046_remove_ColumnMark.cs" />
+    <Compile Include="Migrations\201912051600046_remove_ColumnMark.designer.cs">
+      <DependentUpon>201912051600046_remove_ColumnMark.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Column.cs" />
     <Compile Include="Models\ColumnType.cs" />
     <Compile Include="Models\Mark.cs" />
     <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\СolumnMark.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBase.cs" />
     <Compile Include="Students\StudentsRepository.cs" />
@@ -94,8 +101,18 @@
     <EmbeddedResource Include="Migrations\201911081414582_change_date_type.resx">
       <DependentUpon>201911081414582_change_date_type.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911291326126_Added_ColumnType.resx">
+      <DependentUpon>201911291326126_Added_ColumnType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912051600046_remove_ColumnMark.resx">
+      <DependentUpon>201912051600046_remove_ColumnMark.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SchoolJournal.Core\SchoolJournal.Core.csproj">
+      <Project>{b46da13c-2709-4338-b7b5-5913c0723cf1}</Project>
+      <Name>SchoolJournal.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolJournal.DAL.Interfaces\SchoolJournal.DAL.Interfaces.csproj">
       <Project>{6d065e73-eac7-4115-83b1-4090a417c156}</Project>
       <Name>SchoolJournal.DAL.Interfaces</Name>

@@ -36,15 +36,23 @@ namespace SchoolJournal.BLL
                 .Adapt<List<JournalGridColumnViewModel>>();
         }
 
-        public void AddJournalGridLessonColumn(IEnumerable<StudentMarkViewModel> marks)
+        public async Task<bool> AddJournalGridLessonColumn(IEnumerable<StudentMarkViewModel> marks, DateTime inputValue)
         {
-            var currentDate = DateTime.Now;
+            //var currentDate = DateTime.Now;
 
-            ColumnType columnType = _columnTypeRepository.FindByName("LESSON");
+            ColumnType columnType = await _columnTypeRepository.FindByName("LESSON");
 
-            long columnId = _columnsRepository.AddColumn(columnType.Id, currentDate);
+            long columnId = await _columnsRepository.AddColumn(columnType.Id, inputValue);
 
-            _columnMarksRepository.AddMarks(columnId, marks.Adapt<IEnumerable<StudentMarkModel>>());
+            return await _columnMarksRepository.AddMarks(columnId, marks.Adapt<IEnumerable<StudentMarkModel>>());
         }
+
+        public async Task<bool> DeleteJournalGridLessonColumnsAndMarks()
+        {
+            var deleteMarksResult = await _columnMarksRepository.DeleteAllMarks();
+            var deleteColumnsResult = await _columnsRepository.DeleteAllColumns();
+            return deleteColumnsResult && deleteMarksResult;
+        }
+
     }
 }
