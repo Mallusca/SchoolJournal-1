@@ -20,27 +20,41 @@ namespace SchoolJournal.DAL.JournalGrid
         public IQueryable<JournalGridColumnModel> List()
         {
             var data = (from c in DbContext.Columns
-                        join cm in DbContext.ColumnMarks on c.Id equals cm.ColumnId into cmGroup
+                        join m in DbContext.Marks on c.Id equals m.ColumnId into cmGroup
                         orderby c.Date
                         select new JournalGridColumnModel
                         {
                             Id = c.Id,
                             Date = c.Date,
-                            Marks = (from m in DbContext.Marks
-                                     where cmGroup.Any(x => x.MarkId == m.Id)
-                                     select new StudentMarkModel
-                                     {
-                                         StudentId = m.StudentId,
-                                         Value = m.Value
-                                     }).ToList()
+                            Marks = cmGroup.Select(x => new StudentMarkModel
+                            {
+                                StudentId = x.StudentId,
+                                Value = x.Value
+                            }).ToList()
                         });
 
             return data;
         }
 
-        public long AddColumn(long columnTypeId, DateTime columnDate)
+        public async Task<long> AddColumn(long columnTypeId, DateTime columnDate)
         {
-            throw new NotImplementedException();
+            var dbColumn = DbContext.Columns.Add(new Column
+            {
+                Date = columnDate,
+                ColumnTypeId = columnTypeId,
+            });
+
+            await DbContext.SaveChangesAsync();
+
+            return dbColumn.Id;
+        }
+
+        public async Task<bool> DeleteAllColumns()
+        {
+            var dbColumns = DbContext.Columns.RemoveRange(DbContext.Columns);
+            await DbContext.SaveChangesAsync();
+
+            return DbContext.Columns.Count() == 0;
         }
 
     }

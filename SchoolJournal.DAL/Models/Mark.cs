@@ -12,11 +12,14 @@
         [ForeignKey("Student")]
         public long StudentId { get; set; }
 
+        [ForeignKey("Column")]
+        public long ColumnId { get; set; }
+
         public int Value { get; set; }
 
-        public Student Student { get; set; }
+        public virtual Student Student { get; set; }
 
-        public ICollection<СolumnMark> ColumnMarks { get; set; }
+        public virtual Column Column { get; set; }
     }
 }
 

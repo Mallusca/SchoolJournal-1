@@ -17,6 +17,6 @@
 
         public ColumnType ColumnType { get; set; }
 
-        public ICollection<СolumnMark> ColumnMarks { get; set; }
+        public virtual ICollection<Mark> Marks { get; set; }
     }
 }
