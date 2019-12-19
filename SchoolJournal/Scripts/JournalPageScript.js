@@ -15,20 +15,23 @@
         cancelColumnButton = $(".cancel-column"),
         confirmColumnButton = $(".confirm-column-creation"),
         createColumnCell = $(".new-column-cell"),
-        createColumnDate = $(".new-column-date")
+        createColumnDate = $(".new-column-date"),
+        dateId = $("#datetime"),
+        inputOfDate = $('.new-date'),
+        inputOfMarks = $('.new-column-input')
+    var now = new Date();
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+    var today = now.getFullYear() + "-" + (month) + "-" + (day);
 
     window.createColumn = function () {
-        var now = new Date();
-        var day = ("0" + now.getDate()).slice(-2);
-        var month = ("0" + (now.getMonth() + 1)).slice(-2);
-        var today = now.getFullYear() + "-" + (month) + "-" + (day);
-        $("#datetime").val(today);
+        dateId.val(today);
         createColumnButton.hide();
         confirmColumnButton.show();
         createColumnCell.show();
         createColumnDate.show();
         cancelColumnButton.show();
-        $('.new-date').val();      
+        inputOfDate.val();      
     }
 
     window.cancelColumn = function () {
@@ -61,7 +64,7 @@
     }
 
     window.confirmColumnCreation = function () {
-        let columnMarks = $('.new-column-input').map(function () {
+        let columnMarks = inputOfMarks.map(function () {
             const input = this;
             if (input.value !== "") {
                 return {
@@ -81,7 +84,7 @@
             type: "POST",
             contentType: "application/json",
             dataType: "json",
-            data: JSON.stringify({ marks: columnMarks,inputValue:$('.new-date').val()}),
+            data: JSON.stringify({ marks: columnMarks, inputValue: inputOfDate.val()}),
             success: function (response) {
                 if (response) {
                     $('.journal-container').load("/School/Partial", function () {

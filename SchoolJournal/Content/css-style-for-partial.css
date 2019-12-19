@@ -1,4 +1,10 @@
 ﻿
+td, th {
+    border: 1px double black;
+    border-collapse: collapse;
+    border-radius: 2px;
+}
+
 td {
     background: #E0FFFF;
 }
@@ -10,16 +16,14 @@ th {
 td, th {
     text-align: center;
 }
-
 .journal-container {
     display: flex;
     flex-direction: row;
-    border-collapse: separate;
+    border-collapse: collapse;
 }
 
 .journal-table {
     width: 90%;
-    border-style: solid;
 }
 
 .new-column {
