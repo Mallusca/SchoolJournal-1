@@ -40,7 +40,6 @@
         [HttpPost]
         public async Task<ActionResult> CreateColumn(IEnumerable<StudentMarkViewModel> marks, DateTime inputValue)
         {
-<<<<<<< HEAD
 
             bool response = await _journalGridColumnService.AddJournalGridLessonColumn(marks, inputValue);
 
@@ -65,10 +64,7 @@
             JournalGridPageViewModel journalGridPageViewModel = new JournalGridPageViewModel(studentsForJournalGrid, journalGridColumns);
 
             return PartialView(journalGridPageViewModel);
-=======
-            
-             return Json(_journalGridColumnService.AddJournalGridLessonColumn(marks));
->>>>>>> 04518fc36e324843c29f48ee63898427baf89a7c
+          
         }
 
     }
