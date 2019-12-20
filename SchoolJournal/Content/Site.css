@@ -1,6 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url('Images/11702194.jpg');
+    background-size: 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -192,4 +194,4 @@ th, td {
     height: 40px;
     text-align: center;
     line-height: 40px;
-}
+} 

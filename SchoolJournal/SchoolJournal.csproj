@@ -133,6 +133,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\11702194.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\css\font-awesome.css" />
     <Content Include="fonts\css\font-awesome.min.css" />
@@ -160,6 +161,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Content Include="Content\css-style-for-partial.css" />
     <Compile Include="Controllers\SchoollController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,6 +181,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\School\Partial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -194,6 +197,10 @@
     <ProjectReference Include="..\SchoolJournal.BLL.Module\SchoolJournal.BLL.Module.csproj">
       <Project>{b2f750d4-602e-45fd-9847-647b794bed07}</Project>
       <Name>SchoolJournal.BLL.Module</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolJournal.Core\SchoolJournal.Core.csproj">
+      <Project>{b46da13c-2709-4338-b7b5-5913c0723cf1}</Project>
+      <Name>SchoolJournal.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SchoolJournal.DAL.Module\SchoolJournal.DAL.Module.csproj">
       <Project>{4be8f405-bc93-44d3-aa14-a021f9c1ba4b}</Project>

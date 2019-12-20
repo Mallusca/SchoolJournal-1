@@ -26,6 +26,7 @@
                     "~/Content/bootstrap.min.css",
                     "~/Content/bootstrap-theme.min.css",
                     "~/Content/form.css"
+
                 ).Include("~/fonts/css/font-awesome.min.css", new CssRewriteUrlTransform()));
 
         }

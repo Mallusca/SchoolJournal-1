@@ -13,7 +13,7 @@ namespace SchoolJournal.BLL
     using System;
     using SchoolJournal.Domain;
 
-    public class JournalGridColumnsService: IJournalGridColumnsService
+    public class JournalGridColumnsService : IJournalGridColumnsService
     {
         private readonly IColumnsRepository _columnsRepository;
         private readonly IColumnMarksRepository _columnMarksRepository;
@@ -37,16 +37,19 @@ namespace SchoolJournal.BLL
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         public bool AddJournalGridLessonColumn(IEnumerable<StudentMarkViewModel> marks)
+=======
+        public async Task<bool> AddJournalGridLessonColumn(IEnumerable<StudentMarkViewModel> marks, DateTime inputValue)
+>>>>>>> 1fb8d38aced7bc01fe3f66edbbf29ae5cc0639ee
         {
-            try
-            {
-                var currentDate = DateTime.Now;
+            //var currentDate = DateTime.Now;
 
-                ColumnType columnType = _columnTypeRepository.FindByName("LESSON");
+            ColumnType columnType = await _columnTypeRepository.FindByName("LESSON");
 
-                long columnId = _columnsRepository.AddColumn(columnType.Id, currentDate);
+            long columnId = await _columnsRepository.AddColumn(columnType.Id, inputValue);
 
+<<<<<<< HEAD
                 return _columnMarksRepository.AddMarks(columnId, marks.Adapt<IEnumerable<StudentMarkModel>>());
             }
             catch (Exception e)
@@ -64,6 +67,15 @@ namespace SchoolJournal.BLL
 
             return await _columnMarksRepository.AddMarks(columnId, marks.Adapt<IEnumerable<StudentMarkModel>>());
 >>>>>>> dd5dbe8... Added DeleteJournalGridLessonColumnsAndMarks and garbage
+=======
+            return await _columnMarksRepository.AddMarks(columnId, marks.Adapt<IEnumerable<StudentMarkModel>>());
+        }
+        public async Task<bool> DeleteJournalGridLessonColumnsAndMarks()
+        {
+            var deleteMarksResult = await _columnMarksRepository.DeleteAllMarks();
+            var deleteColumnsResult = await _columnsRepository.DeleteAllColumns();
+            return deleteColumnsResult && deleteMarksResult;
+>>>>>>> 1fb8d38aced7bc01fe3f66edbbf29ae5cc0639ee
         }
 
         public async Task<bool> DeleteJournalGridLessonColumnsAndMarks()

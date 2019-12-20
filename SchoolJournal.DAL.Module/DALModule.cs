@@ -5,6 +5,7 @@
     using DAL.Students;
     using DAL.JournalGrid;
     using Interfaces;
+    using Unity.Injection;
 
     public static class DALModule
     {
@@ -14,11 +15,12 @@
 
             container.RegisterType<IStudentsRepository, StudentsRepository>();
 
-            container.RegisterType<IColumnMarksRepository, ColumnMarksRepository>();
-
             container.RegisterType<IColumnsRepository, ColumnsRepository>();
 
+            container.RegisterType<IColumnMarksRepository, ColumnMarksRepository>();
+
             container.RegisterType<IColumnTypeRepository, ColumnTypeRepository>();
+
         }
     }
 }

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolJournal.BLL.Module", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolJournal.DAL.Module", "SchoolJournal.DAL.Module\SchoolJournal.DAL.Module.csproj", "{4BE8F405-BC93-44D3-AA14-A021F9C1BA4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolJournal.Core", "SchoolJournal.Core\SchoolJournal.Core.csproj", "{B46DA13C-2709-4338-B7B5-5913C0723CF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{4BE8F405-BC93-44D3-AA14-A021F9C1BA4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BE8F405-BC93-44D3-AA14-A021F9C1BA4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BE8F405-BC93-44D3-AA14-A021F9C1BA4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B46DA13C-2709-4338-B7B5-5913C0723CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46DA13C-2709-4338-B7B5-5913C0723CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B46DA13C-2709-4338-B7B5-5913C0723CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B46DA13C-2709-4338-B7B5-5913C0723CF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

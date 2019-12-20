@@ -12,7 +12,7 @@
     @Styles.Render("~/Content/fontawesome")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -22,7 +22,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div>*@
 
     <div class="container body-content">
 
@@ -34,9 +34,9 @@
         <div class="popupMessage" id="popupMessageBlock"></div>
         <!-- Это типа фон попапа -->
         <div class="popupMessageBackground" id="popupMessageBlockBackground" onclick="showPopUp(false);"></div>
-        <hr />
+        @*<hr />*@
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <h2>&copy;@DateTime.Now.Year - My ASP.NET Application</h2>
         </footer>
     </div>
 </body>

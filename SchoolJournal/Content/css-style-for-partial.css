@@ -1,0 +1,99 @@
+﻿
+h2 {
+    color: white;
+    text-align: center;
+}
+td, th {
+    font-family: Roboto, sans-serif;
+    border: 1px double black;
+    border-collapse: separate;
+    border-radius: 2px;
+    text-align: center;
+}
+    th, td:first-child {
+        background: #43aee0;
+        color: white;
+        padding: 10px 20px;
+    }
+
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+
+td {
+    background: #608b9b;
+    color: white;
+}
+
+.journal-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.journal-table {
+    width: 90%;
+}
+
+.new-column {
+    width: 10%;
+}
+
+.new-column-control-container {
+    text-align: right;
+}
+
+.confirm-column-creation:hover,
+.create-column:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.cancel-column:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.cancel-column {
+    border: 1px solid;
+    border-radius: 25%;
+    color: blue;
+    font-size: 24px;
+    padding: 2px;
+}
+
+.create-column,
+.confirm-column-creation {
+    border: 1px solid;
+    border-radius: 25%;
+    color: blue;
+    font-size: 24px;
+    padding: 2px;
+}
+
+.confirm-column-creation {
+    display: none;
+}
+
+.new-column-cell {
+    display: none;
+}
+
+.new-column-date {
+    display: none;
+}
+
+.cancel-column {
+    display: none;
+}
+
+.delete-all-columns-and-dates {
+    border: 1px solid;
+    border-radius: 25%;
+    color: blue;
+    font-size: 24px;
+    padding: 2px;
+}
+
+.delete-all-columns-and-dates:hover {  
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+}

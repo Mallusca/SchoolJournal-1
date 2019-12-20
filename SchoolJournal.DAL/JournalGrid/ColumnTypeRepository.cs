@@ -7,6 +7,8 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Mapster;
+    using System.Data.Entity;
 
     public class ColumnTypeRepository : RepositoryBase, IColumnTypeRepository
     {
@@ -14,10 +16,15 @@
         {
         }
 
-        public ColumnType FindByName(string typeName)
+        public async Task<ColumnType> FindByName(string typeName)
         {
-            //how to seed data to database
-            throw new Exception("NEED TO SEED COLUMN TYPES(LESSON, EXAM etc) TO DB AND IMPLEMENT FINDBYNAME");
+            var columnType = await DbContext.ColumnsTypes
+                .Where(ct => ct.TypeValue.Equals(typeName))
+                .FirstOrDefaultAsync();
+
+
+            return columnType.Adapt<ColumnType>();     
+
         }
     }
-}
+}         

@@ -3,6 +3,7 @@ using SchoolJournal.DAL.Models;
 using SchoolJournal.Domain;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace SchoolJournal.DAL.JournalGrid
         {
         }
 
-        public bool AddMarks(long columnId, IEnumerable<StudentMarkModel> marks)
+        public async Task<bool> AddMarks(long columnId, IEnumerable<StudentMarkModel> marks)
         {
 
             var dbMarks = DbContext.Marks.AddRange(
@@ -24,18 +25,21 @@ namespace SchoolJournal.DAL.JournalGrid
                 {
                     Value = x.Value,
                     StudentId = x.StudentId,
+                    ColumnId = columnId
                 })
             );
 
-            DbContext.ColumnMarks.AddRange(dbMarks.Select(
-                x => new СolumnMark
-                {
-                    ColumnId = columnId,
-                    MarkId = x.Id
-                }
-            ));
+            await DbContext.SaveChangesAsync();
 
-            throw new NotImplementedException();
+            return dbMarks.Count() > 0;
+        }
+
+        public async Task<bool> DeleteAllMarks()
+        {
+            var dbMarks = DbContext.Marks.RemoveRange(DbContext.Marks);
+            await DbContext.SaveChangesAsync();
+
+            return DbContext.Marks.Count() == 0;
         }
     }
 }
