@@ -26,12 +26,12 @@
 
     window.createColumn = function () {
         dateId.val(today);
+        inputOfDate.val();      
         createColumnButton.hide();
         confirmColumnButton.show();
         createColumnCell.show();
         createColumnDate.show();
-        cancelColumnButton.show();
-        inputOfDate.val();      
+        cancelColumnButton.show();     
     }
 
     window.cancelColumn = function () {
