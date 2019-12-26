@@ -9,36 +9,35 @@
     //повыносить все элементы типа  $(".confirm-column-creation") в переменные пример ниже
 
     // просмотреть все имена методов и цсс классов, буду строго дрючить
-
-
+    
     var createColumnButton = $(".create-column"),
-        cancelColumnButton = $(".cancel-column"),
-        confirmColumnButton = $(".confirm-column-creation"),
-        createColumnCell = $(".new-column-cell"),
-        createColumnDate = $(".new-column-date"),
-        dateId = $("#datetime"),
-        inputOfDate = $('.new-date'),
-        inputOfMarks = $('.new-column-input')
-    var now = new Date();
-    var day = ("0" + now.getDate()).slice(-2);
-    var month = ("0" + (now.getMonth() + 1)).slice(-2);
-    var today = now.getFullYear() + "-" + (month) + "-" + (day);
+        cancelColumnCreationButton = $(".cancel-column-creation"),
+        confirmColumnCreationButton = $(".confirm-column-creation"),
+        newColumnCell = $(".new-column-cell"),
+        newColumnDate = $(".new-column-date"),
+        newColumnDateInput = $("#datetime"),
+        newColumnMarks = $('.new-column-input');
 
     window.createColumn = function () {
-        dateId.val(today);
-        inputOfDate.val();      
+        let now = new Date();
+        let day = ("0" + now.getDate()).slice(-2);
+        let month = ("0" + (now.getMonth() + 1)).slice(-2);
+        let today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+        newColumnDateInput.val(today);
+        
         createColumnButton.hide();
-        confirmColumnButton.show();
-        createColumnCell.show();
-        createColumnDate.show();
-        cancelColumnButton.show();     
+        confirmColumnCreationButton.show();
+        newColumnCell.show();
+        newColumnDate.show();
+        cancelColumnCreationButton.show();     
     }
 
     window.cancelColumn = function () {
-        createColumnCell.hide();
-        createColumnDate.hide();
-        cancelColumnButton.hide();
-        confirmColumnButton.hide();
+        newColumnCell.hide();
+        newColumnDate.hide();
+        cancelColumnCreationButton.hide();
+        confirmColumnCreationButton.hide();
         createColumnButton.show();
     }
 
@@ -64,7 +63,7 @@
     }
 
     window.confirmColumnCreation = function () {
-        let columnMarks = inputOfMarks.map(function () {
+        let columnMarks = newColumnMarks.map(function () {
             const input = this;
             if (input.value !== "") {
                 return {
@@ -84,17 +83,17 @@
             type: "POST",
             contentType: "application/json",
             dataType: "json",
-            data: JSON.stringify({ marks: columnMarks, inputValue: inputOfDate.val()}),
+            data: JSON.stringify({ marks: columnMarks, inputValue: newColumnDateInput.val()}),
             success: function (response) {
                 if (response) {
                     $('.journal-container').load("/School/Partial", function () {
-                        createColumnCell.hide();
-                        createColumnDate.hide();
+                        newColumnCell.hide();
+                        newColumnDate.hide();
                     });
                 }
-                else
+                else {
                     alert("ошибка, колонка не добавлена!");
-
+                }
             },
             error: function (error) {
                 alert("ошибка, колонка не добавлена, смотри консоль!");
