@@ -6,6 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using Interfaces;
+    using SchoolJournal.DAL.Models;
     using SchoolJournal.Domain;
 
     public class StudentsRepository : RepositoryBase, IStudentsRepository
@@ -26,6 +27,18 @@
                         });
 
             return data;
+        }
+        public async Task<bool> AddStudent(string studentFirstName, string studentLastName)
+        {
+
+            var dbAddStudent = DbContext.Students.Add(new Student
+            {
+                FirstName = studentFirstName,
+                LastName = studentLastName,
+            });
+
+            await DbContext.SaveChangesAsync();
+            return DbContext.Students.Count() >= 3;
         }
     }
 }

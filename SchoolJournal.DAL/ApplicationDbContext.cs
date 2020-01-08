@@ -55,7 +55,7 @@
 
             private void SeedTestStudents(ApplicationDbContext context)
             {
-                if (context.Students.Count() == 3)
+                if (context.Students.Count() >= 3)
                     return;
 
                 var studentsList = new List<Student>();
@@ -70,7 +70,7 @@
 
             private void SeedColumnTypes(ApplicationDbContext context)
             {
-                if (context.ColumnsTypes.Count() == 3)
+                if (context.ColumnsTypes.Count() >= 3)
                     return;
 
                 var columnTypes = new List<ColumnType>();

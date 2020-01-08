@@ -206,6 +206,10 @@
       <Project>{4be8f405-bc93-44d3-aa14-a021f9c1ba4b}</Project>
       <Name>SchoolJournal.DAL.Module</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SchoolJournal.Domain\SchoolJournal.Domain.csproj">
+      <Project>{749CE2C9-353A-4167-B19C-7D408BBFAA96}</Project>
+      <Name>SchoolJournal.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolJournal.ViewModels\SchoolJournal.ViewModels.csproj">
       <Project>{8fe5dc00-48e8-4a0b-a996-4fd050af93f6}</Project>
       <Name>SchoolJournal.ViewModels</Name>

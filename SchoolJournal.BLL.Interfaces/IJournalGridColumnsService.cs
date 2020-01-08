@@ -12,6 +12,6 @@ namespace SchoolJournal.BLL.Interfaces
 
         Task<bool> AddJournalGridLessonColumn(IEnumerable<StudentMarkViewModel> marks, DateTime inputValue);
 
-        Task<bool> DeleteJournalGridLessonColumnsAndMarks();
+        Task<bool> DeleteJournalGridLessonColumnsAndMarks();     
     }
 }

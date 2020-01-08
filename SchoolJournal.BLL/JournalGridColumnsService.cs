@@ -38,9 +38,7 @@ namespace SchoolJournal.BLL
 
 
         public async Task<bool> AddJournalGridLessonColumn(IEnumerable<StudentMarkViewModel> marks, DateTime inputValue)
-        {
-            //var currentDate = DateTime.Now;
-
+        { 
             ColumnType columnType = await _columnTypeRepository.FindByName("LESSON");
 
             long columnId = await _columnsRepository.AddColumn(columnType.Id, inputValue);

@@ -49,11 +49,11 @@ td {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-.cancel-column:hover {
+.cancel-column-creation:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-.cancel-column {
+.cancel-column-creation {
     border: 1px solid;
     border-radius: 25%;
     color: blue;
@@ -82,7 +82,7 @@ td {
     display: none;
 }
 
-.cancel-column {
+.cancel-column-creation {
     display: none;
 }
 
@@ -97,3 +97,27 @@ td {
 .delete-all-columns-and-dates:hover {  
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
 }
+
+.add-student {
+    border: 1px solid;
+    border-radius: 25%;
+    color: blue;
+    font-size: 24px;
+    padding: 2px;
+}
+.add-student:hover {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+.add-student-cell{
+    display:none;
+}
+.confirm-student-creation {
+    border: 1px solid;
+    border-radius: 25%;
+    color: blue;
+    font-size: 24px;
+    padding: 2px;
+}
+    .confirm-student-creation:hover {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }

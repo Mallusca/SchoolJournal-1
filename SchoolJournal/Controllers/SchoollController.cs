@@ -9,6 +9,7 @@
     using System.Web.Mvc;
     using Newtonsoft.Json;
     using SchoolJournal.BLL.Interfaces;
+    using SchoolJournal.Domain;
     using SchoolJournal.ViewModels;
 
     public class SchoolController : Controller
@@ -55,6 +56,12 @@
 
         }
 
+        [HttpPost]
+        public async Task<ActionResult> CreateStudent(string studentFirstName, string studentLastName)
+        {
+            var result = await _studentsService.AddStudent(studentFirstName, studentLastName);
+            return Json(result);
+        }
 
         public ActionResult Partial()
         {

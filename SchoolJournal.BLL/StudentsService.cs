@@ -9,6 +9,7 @@
     using SchoolJournal.ViewModels;
     using DAL.Interfaces;
     using Mapster;
+    using SchoolJournal.Domain;
 
     public class StudentsService : IStudentsService
     {
@@ -26,6 +27,11 @@
                 .GetStudentsForJournalGrid()
                 .ToList()
                 .Adapt<List<JournalGridStudentViewModel>>();
+        }
+
+        public async Task<bool> AddStudent(string studentFirstName, string studentLastName)
+        {
+           return await _studentsRepository.AddStudent(studentFirstName, studentLastName); 
         }
     }
 }
