@@ -1,14 +1,5 @@
 ﻿(function () {
-    // разобраться с кнопкой + она не исчезает
-    // закомитить 
 
-    //поработать на дизайном, чтобы было чуть-чуть красивее посмотри в сторону материал дизайн гайдов
-    //bootstrap дизайна
-    //вынести весь цсс в отдельный файл
-
-    //повыносить все элементы типа  $(".confirm-column-creation") в переменные пример ниже
-
-    // просмотреть все имена методов и цсс классов, буду строго дрючить
     $(document).ready(function () {
         $('.new-column-input').bind("change keyup input click", function () {
             if (this.value.match(/[^0-9]/g)) {
@@ -28,7 +19,8 @@
         addStudentButton = $('.add-student-cell'),
         confirmStudentCreationButton = $('.confirm-student-creation'),
         newFirstName= $('.new-student-firstname'),
-        newLastName= $('.new-student-lastname');
+        newLastName = $('.new-student-lastname'),
+        
 
     window.addStudent = function () {
         addStudentButton.show();
@@ -49,6 +41,28 @@
         newColumnDate.show();
         cancelColumnCreationButton.show();
     }
+    window.deleteChosenStudent = function (studId) {
+        $.ajax({
+            url: "/School/DeleteChosenStudent",
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({ studentId: studId }),
+            success: function (response) {
+                if (response) {
+                    $('.journal-container').load("/School/Partial", function () {
+                    });
+                }
+                else {
+                    alert("ошибка, cтудент не удалён!");
+                }
+            },
+            error: function (error) {
+                alert("ошибка, студент не смог быть удалён, смотри консоль!");
+                console.log(error);
+            }
+        });
+    }
 
     window.cancelColumn = function () {
         newColumnCell.hide();
@@ -59,23 +73,6 @@
         addStudentButton.hide();
     }
     window.confirmStudentCreation = function () {
-        //let addStudentFirstName = newFirstName.map(function () {
-        //    const input = this;
-        //    if (input.value !== "") {
-        //        return {
-        //            value: input.value,
-        //        };
-        //    }
-        //}).get();
-        //let addStudentLastName = newLastName.map(function () {
-        //    const input = this;
-        //    if (input.value !== "") {
-        //        return {
-        //            value: input.value,
-        //        };
-        //    }
-        //}).get();
-
         $.ajax({
             url: "/School/CreateStudent",
             type: "POST",

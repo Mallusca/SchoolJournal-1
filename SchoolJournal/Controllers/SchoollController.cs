@@ -62,6 +62,13 @@
             var result = await _studentsService.AddStudent(studentFirstName, studentLastName);
             return Json(result);
         }
+        [HttpPost]
+        public async Task<ActionResult> DeleteChosenStudent(long studentId)
+        {
+            var result = await _studentsService.DeleteChosenStudent(studentId);
+            return Json(result);
+        }
+
 
         public ActionResult Partial()
         {

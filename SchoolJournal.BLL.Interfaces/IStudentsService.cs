@@ -10,5 +10,7 @@
         List<JournalGridStudentViewModel> GetStudentsForJournalGrid();
 
         Task<bool> AddStudent(string studentFistName, string studentListName);
+
+        Task<bool> DeleteChosenStudent(long studentId);
     }
 }

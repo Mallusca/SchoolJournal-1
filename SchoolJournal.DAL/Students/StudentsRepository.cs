@@ -40,5 +40,23 @@
             await DbContext.SaveChangesAsync();
             return DbContext.Students.Count() >= 3;
         }
+
+        public async Task<bool> DeleteChosenStudent(long studentId)
+        {
+
+            DbContext.Marks.RemoveRange(DbContext.Marks.Where(stId => stId.StudentId == studentId));
+            var dbStudent = DbContext.Students.Find(studentId);
+            dbStudent = DbContext.Students.Remove(dbStudent);
+            await DbContext.SaveChangesAsync();
+
+            return DbContext.Students.Find(studentId) == null;
+        }
     }
 }
+//var dbMarks = DbContext.Marks.Where(stId => stId.StudentId == studentId)
+//  .FirstOrDefault();
+//DbContext.Marks.Remove(dbMarks);
+//await DbContext.SaveChangesAsync();
+//DbContext.Marks.Where(stId => stId.StudentId.Equals(studentId))
+//var dbMarks = DbContext.Marks.Where(ct => ct.StudentId.Equals(studentId))
+//    .FirstOrDefault();

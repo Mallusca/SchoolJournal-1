@@ -1,8 +1,14 @@
-﻿
-h2 {
-    color: white;
-    text-align: center;
+﻿.delete-chosen-student {
+    font-size: 18px;
+    transform: translateX(8px);
 }
+    .delete-chosen-student:hover {
+        transform: translate(8px) scale(1.5)
+    }
+    h2 {
+        color: white;
+        text-align: center;
+    }
 td, th {
     font-family: Roboto, sans-serif;
     border: 1px double black;
@@ -44,13 +50,16 @@ td {
     text-align: right;
 }
 
+.cancel-column-creation:hover,
+.confirm-student-creation:hover,
+.add-student:hover,
+.delete-all-columns-and-dates:hover,
 .confirm-column-creation:hover,
 .create-column:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.cancel-column-creation:hover {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .cancel-column-creation {
@@ -94,9 +103,6 @@ td {
     padding: 2px;
 }
 
-.delete-all-columns-and-dates:hover {  
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
-}
 
 .add-student {
     border: 1px solid;
@@ -105,9 +111,7 @@ td {
     font-size: 24px;
     padding: 2px;
 }
-.add-student:hover {
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    }
+
 .add-student-cell{
     display:none;
 }
@@ -118,6 +122,6 @@ td {
     font-size: 24px;
     padding: 2px;
 }
-    .confirm-student-creation:hover {
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    }
+
+
+

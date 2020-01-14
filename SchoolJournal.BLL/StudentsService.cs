@@ -33,5 +33,11 @@
         {
            return await _studentsRepository.AddStudent(studentFirstName, studentLastName); 
         }
+
+
+        public async Task<bool> DeleteChosenStudent(long studentId)
+        {
+            return await _studentsRepository.DeleteChosenStudent(studentId);
+        }
     }
 }
