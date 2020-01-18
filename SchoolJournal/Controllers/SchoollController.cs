@@ -7,7 +7,6 @@
     using System.Net;
     using System.Threading.Tasks;
     using System.Web.Mvc;
-    using Newtonsoft.Json;
     using SchoolJournal.BLL.Interfaces;
     using SchoolJournal.Domain;
     using SchoolJournal.ViewModels;
@@ -79,6 +78,14 @@
 
             return PartialView(journalGridPageViewModel);
           
+        }
+
+        [Route("School/student/{id}")]
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var stud = _studentsService.StudentDetails(id);
+            return View(stud);
         }
 
     }

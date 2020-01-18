@@ -182,6 +182,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\School\Partial.cshtml" />
+    <Content Include="Views\School\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -205,6 +206,10 @@
     <ProjectReference Include="..\SchoolJournal.DAL.Module\SchoolJournal.DAL.Module.csproj">
       <Project>{4be8f405-bc93-44d3-aa14-a021f9c1ba4b}</Project>
       <Name>SchoolJournal.DAL.Module</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolJournal.DAL\SchoolJournal.DAL.csproj">
+      <Project>{E1E00F92-E2A1-469D-8A08-36AC7923F39C}</Project>
+      <Name>SchoolJournal.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\SchoolJournal.Domain\SchoolJournal.Domain.csproj">
       <Project>{749CE2C9-353A-4167-B19C-7D408BBFAA96}</Project>

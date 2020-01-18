@@ -10,6 +10,7 @@
     using DAL.Interfaces;
     using Mapster;
     using SchoolJournal.Domain;
+    using SchoolJournal.DAL.Models;
 
     public class StudentsService : IStudentsService
     {
@@ -38,6 +39,11 @@
         public async Task<bool> DeleteChosenStudent(long studentId)
         {
             return await _studentsRepository.DeleteChosenStudent(studentId);
+        }
+
+        public Student StudentDetails(int id)
+        {
+            return _studentsRepository.StudentDetails(id);
         }
     }
 }

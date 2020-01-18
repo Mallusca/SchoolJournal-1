@@ -8,7 +8,27 @@
         });
     });
 
+    $(document).ready(function () {
+        $('.details').click(function () {
+            var id_stud = $(this).attr('id');
+            $.ajax({
+                url: "/School/Details?id=" + id_stud,
+                type: "GET",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify({ id: id_stud }),
+                success: function (data) {
+                    if (data) {
+                    }
+                    else { 
+                        
+                    }
+                },
+            });
+        });
 
+    });
+                
     var createColumnButton = $(".create-column"),
         cancelColumnCreationButton = $(".cancel-column-creation"),
         confirmColumnCreationButton = $(".confirm-column-creation"),
@@ -25,7 +45,7 @@
     window.addStudent = function () {
         addStudentButton.show();
         cancelColumnCreationButton.show()
-    }
+        }
 
     window.createColumn = function () {
         let now = new Date();
@@ -50,7 +70,7 @@
             data: JSON.stringify({ studentId: studId }),
             success: function (response) {
                 if (response) {
-                    $('.journal-container').load("/School/Partial", function () {
+                    $('.journal-container').load("/School/Details", function () {
                     });
                 }
                 else {
@@ -157,3 +177,7 @@
         });
     }
 })();
+
+            //var url = $(this).attr('href');
+            //var splits = url.split('/');
+            //var array = splits[splits.length - 1];

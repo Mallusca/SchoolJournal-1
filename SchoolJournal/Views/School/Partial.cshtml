@@ -30,7 +30,7 @@
     @foreach (var student in Model.Students)
     {
         <tr>
-            <td>@student.FullName<i onclick="deleteChosenStudent(@student.Id)" class="fa fa-trash-o delete-chosen-student"></i></td>
+            <td><a id="@student.Id" class="details" href="http://localhost:19230/School/student/@student.Id">@student.FullName</a><i onclick="deleteChosenStudent(@student.Id)" class="fa fa-trash-o delete-chosen-student"></i></td>
 
             @foreach (JournalGridColumnViewModel column in Model.Columns)
             {

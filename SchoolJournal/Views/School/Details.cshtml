@@ -1,0 +1,77 @@
+﻿@using SchoolJournal.DAL.Models
+@model Student
+
+
+@{
+    var count = 0;
+    var count5 = 0;
+    var count4 = 0;
+    var count3 = 0;
+    var count2 = 0;
+    var count1 = 0;
+    var procent5 = 0;
+    var procent4 = 0;
+    var procent3 = 0;
+    var procent2 = 0;
+    var procent1 = 0;
+}
+<link type="text/css" rel="stylesheet" href="../../Content/css-style-for-partial.css" />
+<table class="details-table">
+    <h2>Детали о студенте</h2>
+    <div>
+        <th></th>
+        <th>Среднее значение</th>
+        <th colspan="5">Подсчёт процента оценок</th>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.FirstName)
+                @Html.DisplayFor(model => model.LastName)
+            </td>
+            <td>@Model.Marks.Average(m => (int?)m.Value)</td>
+
+            @foreach (var m in Model.Marks)
+            {
+                switch (@m.Value)
+                {
+                    case 5:
+                        count++;
+                        count5++;
+                        break;
+                    case 4:
+                        count++;
+                        count4++;
+                        break;
+                    case 3:
+                        count++;
+                        count3++;
+                        break;
+                    case 2:
+                        count++;
+                        count2++;
+                        break;
+                    case 1:
+                        count++;
+                        count1++;
+                        break;
+
+                }
+            }
+            @{
+                procent5 = count5 * 100 / count;
+                procent4 = count4 * 100 / count;
+                procent3 = count3 * 100 / count;
+                procent2 = count2 * 100 / count;
+                procent1 = count1 * 100 / count;
+            } 
+            <td>Процент 5- @procent5 %</td>
+            <td>Процент 4-@procent4 %</td>
+            <td>Процент 3-@procent3 %</td>
+            <td>Процент 2-@procent2 %</td>
+            <td>Процент 1-@procent1 %</td>
+
+        </tr>
+    <td height="100" width="100">
+        @Html.ActionLink("Назад", "JournalPage")
+    </td>
+    </div>
+</table>

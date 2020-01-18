@@ -57,6 +57,10 @@
       <Project>{6d065e73-eac7-4115-83b1-4090a417c156}</Project>
       <Name>SchoolJournal.DAL.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SchoolJournal.DAL\SchoolJournal.DAL.csproj">
+      <Project>{E1E00F92-E2A1-469D-8A08-36AC7923F39C}</Project>
+      <Name>SchoolJournal.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolJournal.Domain\SchoolJournal.Domain.csproj">
       <Project>{749CE2C9-353A-4167-B19C-7D408BBFAA96}</Project>
       <Name>SchoolJournal.Domain</Name>

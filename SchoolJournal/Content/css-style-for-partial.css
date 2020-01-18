@@ -122,6 +122,12 @@ td {
     font-size: 24px;
     padding: 2px;
 }
-
-
+a {
+    color: #f7f9ff; 
+    text-decoration: none; 
+}
+    a:hover {
+        color: #0942ed; /* Цвет ссылки при наведении на нее курсора мыши */
+        text-decoration: underline; /* Добавляем подчеркивание */
+    }
 
