@@ -1,18 +1,42 @@
 ﻿@using SchoolJournal.ViewModels
 @model JournalGridPageViewModel
 
+@{
+    string result = "Вы не авторизованы";
+    if (User.Identity.IsAuthenticated)
+    {
+        result = "Ваш логин: " + User.Identity.Name;
+    }
+
+    string role = "Нет роли";
+    if (User.IsInRole("admin"))
+    {
+        role = ", вы админ!";
+    }
+    else
+    {
+        role = ", вы пользователь!";
+    }
+
+}
 <table class="table journal-table table-dark">
     <tr>
         <th></th>
 
-        <th colspan="@(Model.Columns.Count-1)">Дата</th>
+        <th colspan="@(Model.Columns.Count)">Дата</th>
 
-        <th colspan="3" class="new-column-control-container">
-            <i onclick="createColumn()" class="fa fa-plus create-column"></i>
-            <i onclick="addStudent()" class="fa fa-user-circle add-student"></i>
-            <i onclick="cancelColumn()" class="fa fa-times cancel-column-creation"></i>
-            <i onclick="confirmColumnCreation()" class="fa fa-check confirm-column-creation"></i>
-        </th>
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Admin"))
+            {
+                <th colspan="@(Model.Columns.Count)"  class="new-column-control-container">
+                    <i onclick="createColumn()" class="fa fa-plus create-column"></i>
+                    <i onclick="addStudent()" class="fa fa-user-circle add-student"></i>
+                    <i onclick="cancelColumn()" class="fa fa-times cancel-column-creation"></i>
+                    <i onclick="confirmColumnCreation()" class="fa fa-check confirm-column-creation"></i>
+                </th>
+            }
+        }
     </tr>
     <tr>
         <th>Студент</th>
@@ -29,9 +53,17 @@
     </tr>
     @foreach (var student in Model.Students)
     {
-        <tr>
-            <td><a id="@student.Id" class="details" href="http://localhost:19230/School/student/@student.Id">@student.FullName</a><i onclick="deleteChosenStudent(@student.Id)" class="fa fa-trash-o delete-chosen-student"></i></td>
-
+    <tr>
+        <td>
+            <a id="@student.Id" class="details" href="http://localhost:19230/School/student/@student.Id">@student.FullName</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    <i onclick="deleteChosenStudent(@student.Id)" class="fa fa-trash-o delete-chosen-student"></i>
+                }
+            }
+            </td>
             @foreach (JournalGridColumnViewModel column in Model.Columns)
             {
                 int? markValue = column.Marks.FirstOrDefault(x => x.StudentId == student.Id)?.Value;
@@ -51,10 +83,19 @@
                 <input type="text" class="new-student-firstname" />
                 <input type="text" class="new-student-lastname" />
             </td>
-            <th colspan="@(Model.Columns.Count-1)"></th>
-            <th colspan="2" class="new-column-control">
-                <i onclick="deleteAllColumnsAndDates()" class="fa fa-trash-o delete-all-columns-and-dates"></i>
-            </th>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    @*<th colspan="@(Model.Columns.Count)"></th>*@
+                    <th class="new-column-control">
+                        <i onclick="deleteAllColumnsAndDates()" class="fa fa-trash-o delete-all-columns-and-dates"></i>
+                    </th>
+                }
+            }
+
+            <td>@result @role</td>
+            <td colspan="@(Model.Columns.Count)"><a href="/Account/Logout">Выход</a></td>
         </tr>
 </table>
 

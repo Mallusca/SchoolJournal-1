@@ -127,7 +127,14 @@ a {
     text-decoration: none; 
 }
     a:hover {
-        color: #0942ed; /* Цвет ссылки при наведении на нее курсора мыши */
-        text-decoration: underline; /* Добавляем подчеркивание */
+        color: #0942ed; 
+        text-decoration: underline; 
     }
 
+.col-md-2 {
+    color: white;
+}
+.new-student-firstname,
+.new-student-lastname {
+    float: left;
+}

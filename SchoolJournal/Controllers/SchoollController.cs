@@ -24,6 +24,7 @@
             _journalGridColumnService = journalGridColumnService;
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult JournalPage()
         {
@@ -36,7 +37,7 @@
         }
 
 
-
+        [Authorize(Roles ="admin")]
         [HttpPost]
         public async Task<ActionResult> CreateColumn(IEnumerable<StudentMarkViewModel> marks, DateTime inputValue)
         {
@@ -46,7 +47,7 @@
             return Json(response);
         }
 
-
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<ActionResult> DeleteColumnAndMarks()
         {
@@ -55,12 +56,14 @@
 
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<ActionResult> CreateStudent(string studentFirstName, string studentLastName)
         {
             var result = await _studentsService.AddStudent(studentFirstName, studentLastName);
             return Json(result);
         }
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<ActionResult> DeleteChosenStudent(long studentId)
         {
@@ -68,7 +71,7 @@
             return Json(result);
         }
 
-
+        [Authorize]
         public ActionResult Partial()
         {
             List<JournalGridStudentViewModel> studentsForJournalGrid = _studentsService.GetStudentsForJournalGrid();
@@ -80,6 +83,7 @@
           
         }
 
+        [Authorize]
         [Route("School/student/{id}")]
         [HttpGet]
         public ActionResult Details(int id)
@@ -87,6 +91,8 @@
             var stud = _studentsService.StudentDetails(id);
             return View(stud);
         }
+
+        // Parent(1) - (M)Student
 
     }
 }

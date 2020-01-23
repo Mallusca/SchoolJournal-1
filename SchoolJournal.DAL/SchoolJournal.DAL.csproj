@@ -78,11 +78,27 @@
     <Compile Include="Migrations\201912051600046_remove_ColumnMark.designer.cs">
       <DependentUpon>201912051600046_remove_ColumnMark.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001211423084_authorize.cs" />
+    <Compile Include="Migrations\202001211423084_authorize.designer.cs">
+      <DependentUpon>202001211423084_authorize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001221831248_Role.cs" />
+    <Compile Include="Migrations\202001221831248_Role.designer.cs">
+      <DependentUpon>202001221831248_Role.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001221833117_RoleId.cs" />
+    <Compile Include="Migrations\202001221833117_RoleId.designer.cs">
+      <DependentUpon>202001221833117_RoleId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Column.cs" />
     <Compile Include="Models\ColumnType.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Mark.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBase.cs" />
     <Compile Include="Students\StudentsRepository.cs" />
@@ -106,6 +122,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912051600046_remove_ColumnMark.resx">
       <DependentUpon>201912051600046_remove_ColumnMark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001211423084_authorize.resx">
+      <DependentUpon>202001211423084_authorize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001221831248_Role.resx">
+      <DependentUpon>202001221831248_Role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001221833117_RoleId.resx">
+      <DependentUpon>202001221833117_RoleId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

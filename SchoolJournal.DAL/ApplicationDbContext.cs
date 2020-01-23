@@ -23,6 +23,10 @@
 
         public virtual DbSet<ColumnType> ColumnsTypes { get; set; }
 
+        public virtual DbSet<User> Users { get; set; }
+
+        public virtual DbSet<Role> Roles { get; set; }
+
         //TODOREAD
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) // read about override 
@@ -49,7 +53,6 @@
                 {
                     SeedTestStudents(context);
                 }
-
                 SeedColumnTypes(context);
             }
 
@@ -62,7 +65,7 @@
 
                 studentsList.Add(new Student() { FirstName = "Лёха", LastName = "Прогер" });
                 studentsList.Add(new Student() { FirstName = "Владик", LastName = "Обучаюшийся" });
-                studentsList.Add(new Student() { FirstName = "Сеня", LastName = "Сениор" });
+                studentsList.Add(new Student() { FirstName = "Сеня", LastName = "Сениор" });           
 
                 context.Students.AddRange(studentsList);
                 context.SaveChanges();
@@ -83,6 +86,7 @@
                 context.SaveChanges();
 
             }
+
         }
     }
 
