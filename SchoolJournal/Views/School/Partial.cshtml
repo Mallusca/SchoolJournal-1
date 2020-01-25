@@ -21,22 +21,23 @@
 }
 <table class="table journal-table table-dark">
     <tr>
-        <th></th>
+        <th>@result @role</th>
 
-        <th colspan="@(Model.Columns.Count)">Дата</th>
-
-        @if (User.Identity.IsAuthenticated)
-        {
-            if (User.IsInRole("Admin"))
+        <th colspan="@(Model.Columns.Count)">
+            Дата
+            @if (User.Identity.IsAuthenticated)
             {
-                <th colspan="@(Model.Columns.Count)"  class="new-column-control-container">
-                    <i onclick="createColumn()" class="fa fa-plus create-column"></i>
-                    <i onclick="addStudent()" class="fa fa-user-circle add-student"></i>
-                    <i onclick="cancelColumn()" class="fa fa-times cancel-column-creation"></i>
-                    <i onclick="confirmColumnCreation()" class="fa fa-check confirm-column-creation"></i>
-                </th>
+                if (User.IsInRole("Admin"))
+                {
+                    <i onclick="createColumn()" class="fa fa-plus create-column" title="Добавить колонку!"></i>
+                    <i onclick="addStudent()" class="fa fa-user-circle add-student" title="Добавить студента!"></i>
+                    <i onclick="cancelColumn()" class="fa fa-times cancel-column-creation" title="Закрыть колонку!"></i>
+                    <i onclick="confirmColumnCreation()" class="fa fa-check confirm-column-creation" title="Подтвердить добавление колонки!"></i>
+                    <i onclick="deleteAllColumnsAndDates()" class="fa fa-trash-o delete-all-columns-and-dates"  title="Удалить все оценки и даты!"></i>
+                }
             }
-        }
+        </th>
+
     </tr>
     <tr>
         <th>Студент</th>
@@ -53,16 +54,16 @@
     </tr>
     @foreach (var student in Model.Students)
     {
-    <tr>
-        <td>
-            <a id="@student.Id" class="details" href="http://localhost:19230/School/student/@student.Id">@student.FullName</a>
-            @if (User.Identity.IsAuthenticated)
-            {
-                if (User.IsInRole("Admin"))
+        <tr>
+            <td>
+                <a id="@student.Id" class="details" href="http://localhost:19230/School/student/@student.Id">@student.FullName</a>
+                @if (User.Identity.IsAuthenticated)
                 {
-                    <i onclick="deleteChosenStudent(@student.Id)" class="fa fa-trash-o delete-chosen-student"></i>
+                    if (User.IsInRole("Admin"))
+                    {
+                        <i onclick="deleteChosenStudent(@student.Id)" class="fa fa-trash-o delete-chosen-student"></i>
+                    }
                 }
-            }
             </td>
             @foreach (JournalGridColumnViewModel column in Model.Columns)
             {
@@ -77,26 +78,24 @@
             </td>
         </tr>
     }
-        <tr>
-            <td class="add-student-cell">
-                <i onclick="confirmStudentCreation()" class="fa fa-check confirm-student-creation"></i>
-                <input type="text" class="new-student-firstname" />
-                <input type="text" class="new-student-lastname" />
-            </td>
-            @if (User.Identity.IsAuthenticated)
-            {
-                if (User.IsInRole("Admin"))
-                {
-                    @*<th colspan="@(Model.Columns.Count)"></th>*@
-                    <th class="new-column-control">
-                        <i onclick="deleteAllColumnsAndDates()" class="fa fa-trash-o delete-all-columns-and-dates"></i>
-                    </th>
-                }
-            }
-
-            <td>@result @role</td>
-            <td colspan="@(Model.Columns.Count)"><a href="/Account/Logout">Выход</a></td>
-        </tr>
+    <tr>
+        <td class="add-student-cell" align="center">
+            <input type="text" class="new-student-firstname" style="width: 130px;" />
+            <input type="text" class="new-student-lastname" style="width: 130px;" />
+            <i onclick="confirmStudentCreation()" class="fa fa-check confirm-student-creation" title="Подтвердить добавление студента!"></i>
+        </td>
+        <td colspan="@(Model.Columns.Count+1)" style="background:#43aee0"><a href="/Account/Logout" class="btn btn-primary btn-sm">Выход</a></td>
+    </tr>
 </table>
 
 @Scripts.Render("~/bundles/JournalPageScript")
+
+
+
+
+@*<th colspan="@(Model.Columns.Count)" class="new-column-control-container">
+    <i onclick="createColumn()" class="fa fa-plus create-column"></i>
+    <i onclick="addStudent()" class="fa fa-user-circle add-student"></i>
+    <i onclick="cancelColumn()" class="fa fa-times cancel-column-creation"></i>
+    <i onclick="confirmColumnCreation()" class="fa fa-check confirm-column-creation"></i>
+</th>*@

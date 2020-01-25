@@ -9,33 +9,30 @@
 {
     @Html.AntiForgeryToken()
 <div class="form-horizontal">
-    @*<hr />*@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+    <div class="col" align="center">
+        <div class="col" align="center">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder="Логин" } })
             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+    <div class="col" align="center">
+        <div class="col" align="center">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Пароль", @style = "margin-top:10px;"} })
             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Зарегистрировать" class="btn btn-default" />
+        <div class="buttonReg" align="center">
+            <input type="submit" value="Зарегистрировать" class="btn btn-primary btn-lg" style="background:#00CC99;margin-top:10px" />
         </div>
+        <div class="buttunBack" align="center">
+            <a href="http://localhost:19230/Account/Login" class="btn btn-primary btn-lg" style="margin-top:10px">Назад</a>
+        </div>       
     </div>
-    <div class="col-md-2">
-        @Html.ActionLink("Назад", "Login")
     </div>
-</div>
 }
 
 @Scripts.Render("~/bundles/jqueryval")

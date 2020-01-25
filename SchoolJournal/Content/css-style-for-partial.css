@@ -21,11 +21,14 @@ td, th {
         color: white;
         padding: 10px 20px;
     }
-
 th, td {
     border-style: solid;
     border-width: 0 1px 1px 0;
     border-color: white;
+}
+
+td:last-child td {
+    background: #43aee0;
 }
 
 td {
@@ -62,14 +65,16 @@ td {
     transform: scale(1.2);
 }
 
-.cancel-column-creation {
+ /*{
     border: 1px solid;
     border-radius: 25%;
     color: blue;
     font-size: 24px;
-    padding: 2px;
-}
-
+    padding: 10px;
+}*/
+.delete-all-columns-and-dates,
+.add-student,
+.cancel-column-creation,
 .create-column,
 .confirm-column-creation {
     border: 1px solid;
@@ -77,6 +82,8 @@ td {
     color: blue;
     font-size: 24px;
     padding: 2px;
+    float: right;
+    margin-left: 5px;
 }
 
 .confirm-column-creation {
@@ -95,22 +102,22 @@ td {
     display: none;
 }
 
-.delete-all-columns-and-dates {
+ /*{
     border: 1px solid;
     border-radius: 25%;
     color: blue;
     font-size: 24px;
     padding: 2px;
-}
+}*/
 
 
-.add-student {
+/*.add-student {
     border: 1px solid;
     border-radius: 25%;
     color: blue;
     font-size: 24px;
     padding: 2px;
-}
+}*/
 
 .add-student-cell{
     display:none;
@@ -133,8 +140,18 @@ a {
 
 .col-md-2 {
     color: white;
+    font-size: larger;
 }
-.new-student-firstname,
+/*.new-student-firstname,
 .new-student-lastname {
     float: left;
+}*/
+
+.control-label {
+
 }
+
+.control-label col-md-2 {
+    justify-content: center;
+}
+
